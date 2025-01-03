@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Hack Club Birthdays</title>
+        <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+        <script src="/script.js"></script>
+    </head>
+    <style>
+        :root {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            --bkg: #FFFFFF;
+            --text-color: #000000;
+            --text-color-2: #c99c08;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--bkg);
+        }
+        #topbar {
+            display: flex;
+            flex-wrap: nowrap;
+            height: 15%;
+        }
+        #home-banner {
+            width: 40%;
+            margin-left: 5%;
+            flex-basis: 50%;
+        }
+        #top-links {
+            text-align: right;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            flex-basis: 50%;
+        }
+        #top-links a {
+            text-decoration: none;
+            height: fit-content;
+        }
+        #github {transform: scale(1); transition-duration: 0.2s;}
+        #github:hover {
+            transform: scale(1.1);
+            transition-duration: 0.5s;
+        }
+        #dark-light {
+            margin: auto;
+            position: absolute;
+            height: 2%;
+            top: 2.5%;
+            right: 2%;
+            cursor: pointer;
+        }
+        #header {
+            font-size: 5vw;
+            text-align: center;
+            margin: auto;
+            background: linear-gradient(to right, var(--text-color), var(--text-color-2), var(--text-color-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        #next-birthday {
+            text-align: center;
+        }
+    </style>
+    <body>
+        <div id="topbar">
+            <a href="https://hack.club"><img src="/images/flag-orpheus-top.png" alt="Home" id="home-banner"></a>
+            <div id="top-links">
+                <a href="https://github.com/invictus-anic3tus/Hack-Club-Birthdays"><img src="/images/github.svg" alt="GitHub" id="github"></a>
+                <img src="/images/dark-mode.png" alt="" id="dark-light" onclick="darkOrLight()">
+            </div>
+
+        </div>
+
+        <h1 id="header">Hack Club Birthdays!</h1>
+
+        <h3 id="next-birthday">The next birthday is</h3>
+
+        <form id="getUserForm">
+            <label for="nameInput">Name/Nickname:</label>
+            <input type="date" id="nameInput" required>
+            <label for="monthInput">Month:</label>
+            <input type="date" id="monthInput" required>
+            <label for="dayInput">Name/Nickname:</label>
+            <input type="date" id="dayInput" required>
+            <label for="yearInput">Name/Nickname:</label>
+            <input type="date" id="yearInput" required>
+            <button type="submit">Submit!</button>
+        </form>
+
+        <script>
+            const root = document.querySelector(':root');
+            const darkButton = document.getElementById('dark-light');
+            const githubLink = document.getElementById('github');
+
+            const next = document.getElementById('next-birthday');
+
+            var darkBKG = '#01041a';
+            var lightBKG = '#FFFFFF';
+            var dark = false;
+
+            function darkOrLight() {
+                var rootStyle = getComputedStyle(root);
+
+                if (dark) {
+                    dark = false;
+                    darkButton.src = '/images/dark-mode.png';
+                    githubLink.src = '/images/github.svg';
+                    root.style.setProperty('--bkg', lightBKG);
+                    return;
+                }
+
+                dark = true;
+                darkButton.src = '/images/light-mode.png';
+                githubLink.src = '/images/github-light.png';
+
+                root.style.setProperty('--bkg', darkBKG);
+            }
+        
+        </script>
+
+
+    </body>
+</html>
